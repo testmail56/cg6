@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+    button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+<button onclick="myFunction()"></button>
+<p></p>
+
+<script>
+
+window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+document.getElementById("myInput").value = `
+#include<windows.h>
+#include<GL/glut.h>
+Float trianglePosX=-0.5; 
+Float triangleSpeed=0.005; 
+void display()
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+
+    glBegin(GL_TRIANGLES);
+    glColor3f(1.0,0.0,0.0); 
+    glVertex2f(trianglePosX,0.0);
+    glVertex2f(trianglePosX+0.1,0.2);
+    glVertex2f(trianglePosX+0.2,0.0);
+    glEnd();
+    glutSwapBuffers();
+}
+void update(int value)
+{
+
+    trianglePosX+=triangleSpeed;
+
+    if(trianglePosX>1.1)
+    trianglePosX=-0.05;
+
+    glutPostRedisplay();
+
+    glutTimerFunc(16,update,0);
+}
+void init()
+{
+glClearColor(1.0,1.0,1.0,1.0);
+}
+int main (int argc,char** argv)
+{
+    glutInit(&argc,argv)
+    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
+    glutInitWindowSize(800,600);
+    glutCreateWindow(“opengl Animation);
+    init();
+    glutDisplayFunc(display);
+    glutTimerFunc(display);
+    glutTimerFunc(16,update,0); 
+    glutMainLoop();
+    return 0;
+}
+`
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
