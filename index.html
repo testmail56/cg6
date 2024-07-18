@@ -71,7 +71,6 @@ int main (int argc,char** argv)
     glutCreateWindow(“opengl Animation);
     init();
     glutDisplayFunc(display);
-    glutTimerFunc(display);
     glutTimerFunc(16,update,0); 
     glutMainLoop();
     return 0;
