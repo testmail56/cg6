@@ -32,8 +32,8 @@ document.addEventListener('click', function(event) {
 document.getElementById("myInput").value = `
 #include<windows.h>
 #include<GL/glut.h>
-Float trianglePosX=-0.5; 
-Float triangleSpeed=0.005; 
+float trianglePosX=-0.5; 
+float triangleSpeed=0.005; 
 void display()
 {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -65,10 +65,10 @@ glClearColor(1.0,1.0,1.0,1.0);
 }
 int main (int argc,char** argv)
 {
-    glutInit(&argc,argv)
+    glutInit(&argc,argv);
     glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB);
     glutInitWindowSize(800,600);
-    glutCreateWindow(“opengl Animation);
+    glutCreateWindow("opengl Animation");
     init();
     glutDisplayFunc(display);
     glutTimerFunc(16,update,0); 
